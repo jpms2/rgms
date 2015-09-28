@@ -42,8 +42,8 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         test("org.codehaus.geb:geb-junit4:$gebVersion")
-        test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
-        test("org.seleniumhq.selenium:selenium-support:$seleniumVersion")
+        test("org.seleniumhq.selenium:selenium-firefox-driver:2.44.0")
+        test("org.seleniumhq.selenium:selenium-support:2.44.0")
         compile('lib:itextpdf:5.4.0')
         compile('lib:itext-pdfa:5.4.0')
         compile('lib:itext-xtra:5.4.0')
