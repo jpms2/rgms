@@ -1,17 +1,22 @@
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.remote.DesiredCapabilities
+/*
+	This is the Geb configuration file.
+	
+	See: http://www.gebish.org/manual/current/configuration.html
+*/
 
-autoClearCookies = false
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.firefox.FirefoxProfile
 
-def forcedLocale = "en"
-
-driver = {
-	//DesiredCapabilities capabilities = new DesiredCapabilities()
-	// available capabilities can be find in %USER_HOME%\AppData\Local\Google\Chrome\User Data\default\preferences
-	//def prefs = ["intl.accept_languages":forcedLocale] // Map
-	//capabilities.setCapability("chrome.prefs",prefs);
-	//def driver = { new ChromeDriver(capabilities) }
-    def driver = new ChromeDriver()
-    autoClearCookies = false
-    driver
+driver = { 
+    	//set the firefox locale to 'en-us' since the tests expect english
+    	//see http://stackoverflow.com/questions/9822717 for more details
+    	FirefoxProfile profile = new FirefoxProfile()
+    	profile.setPreference("intl.accept_languages", "en-us")
+	def driverInstance = new FirefoxDriver(profile) 
+	driverInstance.manage().window().maximize() 
+	driverInstance
 }
+
+baseNavigatorWaiting = true
+atCheckWaiting = true
+baseUrl = "http://localhost:8070/"
