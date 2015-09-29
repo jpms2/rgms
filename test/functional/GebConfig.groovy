@@ -1,22 +1,25 @@
-/*
-	This is the Geb configuration file.
-	
-	See: http://www.gebish.org/manual/current/configuration.html
-*/
-
+import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxProfile
 
-driver = { 
-    	//set the firefox locale to 'en-us' since the tests expect english
-    	//see http://stackoverflow.com/questions/9822717 for more details
-    	FirefoxProfile profile = new FirefoxProfile()
-    	profile.setPreference("intl.accept_languages", "en-us")
-	def driverInstance = new FirefoxDriver(profile) 
-	driverInstance.manage().window().maximize() 
-	driverInstance
-}
+driver = {
+//def driver = new HtmlUnitDriver()
+//driver.javascriptEnabled = true
+//driver
+def driver = new FirefoxDriver()
+driver
+} 
 
-baseNavigatorWaiting = true
-atCheckWaiting = true
-baseUrl = "http://localhost:8070/"
+environments {
+   // run as “grails -Dgeb.env=chrome test-app”
+   // See: http://code.google.com/p/selenium/wiki/ChromeDriver
+   chrome {
+     driver = { new ChromeDriver() }
+   }
+
+   // run as “grails -Dgeb.env=firefox test-app”
+   // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
+   firefox {
+    driver = { new FirefoxDriver() }
+  }
+}
