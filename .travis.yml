@@ -20,4 +20,4 @@ branches:
   only:
     - master
 
-script: grails compile --refresh-dependencies && test-app functional:cucumber Member.feature --stacktrace --verbose
+script: grails test-app functional:cucumber Member.feature --stacktrace --verbose
